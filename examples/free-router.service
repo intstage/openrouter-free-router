@@ -1,0 +1,29 @@
+# systemd unit (Linux). Copy to /etc/systemd/system/free-router.service, adjust paths and User, then:
+#   sudo systemctl daemon-reload && sudo systemctl enable --now free-router
+[Unit]
+Description=free-router: auto-pick free OpenRouter models (127.0.0.1:11500)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=YOUR_USER
+ExecStart=/usr/bin/node /opt/openrouter-free-router/free-router.mjs
+Environment=FR_KEY_FILE=/etc/free-router/openrouter.env
+Environment=FR_STATE_DIR=/var/lib/free-router
+# Optional: keep a DeepSeek Harness profile in sync (colon-separated list of cordis.patch.yml files)
+#Environment=FR_DSH_PATCHES=/home/YOUR_USER/.dsh/profiles/web/cordis.patch.yml
+#Environment=FR_DSH_API_KEY_ENV=FREE_ROUTER_KEY
+# ...and let the service write that profile folder (ProtectHome=read-only below):
+#ReadWritePaths=/home/YOUR_USER/.dsh/profiles/web
+# Optional: reach openrouter.ai through an HTTP proxy
+#Environment=FR_HTTPS_PROXY=http://127.0.0.1:8080
+StateDirectory=free-router
+Restart=always
+RestartSec=30
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- launchd agent (macOS). Replace /Users/YOU and the node path (which node), copy to ~/Library/LaunchAgents/, then:
+     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.free-router.plist -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.free-router</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/node</string>
+    <string>/Users/YOU/openrouter-free-router/free-router.mjs</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>FR_KEY_FILE</key><string>/Users/YOU/.config/free-router/openrouter.env</string>
+    <key>FR_STATE_DIR</key><string>/Users/YOU/Library/Application Support/free-router</string>
+    <key>FR_DSH_PATCHES</key><string>/Users/YOU/.dsh/profiles/desktop/cordis.patch.yml</string>
+    <key>FR_DSH_API_KEY_ENV</key><string>FREE_ROUTER_KEY</string>
+    <key>FR_NOTIFY</key><string>mac</string>
+  </dict>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>ThrottleInterval</key><integer>30</integer>
+  <key>StandardOutPath</key><string>/Users/YOU/Library/Logs/free-router.log</string>
+  <key>StandardErrorPath</key><string>/Users/YOU/Library/Logs/free-router.log</string>
+</dict>
+</plist>

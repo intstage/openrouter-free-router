@@ -1,0 +1,6 @@
+# Favorite free OpenRouter models — tried first by "auto", in this order.
+# Everything else that is eligible (free, tool calling, 128k+ context, passed the probe) follows: bigger first, then newer.
+# Free models come and go: edit this list to taste. A copy in FR_STATE_DIR/favorites.txt takes precedence.
+nvidia/nemotron-3-ultra-550b-a55b:free
+google/gemma-4-31b-it:free
+nvidia/nemotron-3.5-super-vl:free

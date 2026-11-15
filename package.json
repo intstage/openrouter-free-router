@@ -1,0 +1,14 @@
+{
+  "name": "openrouter-free-router",
+  "version": "0.1.0",
+  "description": "One OpenAI-compatible endpoint that auto-picks the best available free OpenRouter model; finds and probes new free models daily and can keep DeepSeek Harness config in sync.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "bin": { "free-router": "free-router.mjs" },
+  "scripts": {
+    "start": "node free-router.mjs",
+    "sync": "node free-router.mjs --sync",
+    "test": "node --test free-router.test.mjs"
+  }
+}
